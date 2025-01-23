@@ -7,16 +7,16 @@ using UnityEngine.InputSystem;
 public class PlayerCharacter : MonoBehaviour
 {
     //Character controller
-    private CharacterController cc => this.GetComponent<Character>();
+    private CharacterController Cc => this.GetComponent<CharacterController>();
     //Player input actions
-    private PlayerInput playerInput => this.GetComponent<PlayerInput>();
+    private PlayerInput PlayerInput => this.GetComponent<PlayerInput>();
     //Current direction input
-    private Vector2 currentDirectionInput;
+    private Vector3 currentDirectionInput;
 
 	private void Update()
 	{
-        Vector3 moveDirection = currentDirectionInput;
-        cc.Move(moveDirection * Time.fixedDeltaTime);
+        Vector3 moveDirection = new Vector3(currentDirectionInput.x, 0, currentDirectionInput.y);
+        Cc.Move(moveDirection * Time.deltaTime * 100);
 	}
 
 	public void OnMovement(InputAction.CallbackContext context){
